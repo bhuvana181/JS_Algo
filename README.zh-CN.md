@@ -25,8 +25,7 @@ _Read this in other languages:_
 [_Tiếng Việt_](README.vi-VN.md),
 [_Deutsch_](README.de-DE.md),
 [_Uzbek_](README.uz-UZ.md)
-
-*注意：这个项目仅用于学习和研究，**不是**用于生产环境。*
+[_עברית_](README.he-IL.md)
 
 ## 数据结构
 

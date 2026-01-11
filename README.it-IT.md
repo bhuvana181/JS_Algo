@@ -24,8 +24,7 @@ _Leggilo in altre lingue:_
 [_Tiếng Việt_](README.vi-VN.md),
 [_Deutsch_](README.de-DE.md),
 [_Uzbek_](README.uz-UZ.md)
-
-*☝ Si noti che questo progetto è destinato ad essere utilizzato solo per l'apprendimento e la ricerca e non è destinato ad essere utilizzato per il commercio.*
+[_עברית_](README.he-IL.md)
 
 ## Strutture Dati
 
