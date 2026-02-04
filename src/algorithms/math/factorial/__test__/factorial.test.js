@@ -8,4 +8,8 @@ describe('factorial', () => {
     expect(factorial(8)).toBe(40320);
     expect(factorial(10)).toBe(3628800);
   });
+
+  it('factorial of negative should throw', () => {
+    expect(() => factorial(-1)).toThrow();
+  });
 });
