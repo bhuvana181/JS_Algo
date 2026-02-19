@@ -122,31 +122,19 @@ export default class Knapsack {
 
     while (itemIndex > 0) {
       const currentItem = this.possibleItems[itemIndex];
-      const prevItem = this.possibleItems[itemIndex - 1];
 
-      // Check if matrix value came from top (from previous item).
-      // In this case this would mean that we need to include previous item
-      // to the list of selected items.
-      if (
-        knapsackMatrix[itemIndex][weightIndex]
-        && knapsackMatrix[itemIndex][weightIndex] === knapsackMatrix[itemIndex - 1][weightIndex]
-      ) {
-        // Check if there are several items with the same weight but with the different values.
-        // We need to add highest item in the matrix that is possible to get the highest value.
-        const prevSumValue = knapsackMatrix[itemIndex - 1][weightIndex];
-        const prevPrevSumValue = knapsackMatrix[itemIndex - 2][weightIndex];
-        if (
-          !prevSumValue
-          || (prevSumValue && prevPrevSumValue !== prevSumValue)
-        ) {
-          this.selectedItems.push(prevItem);
-        }
-      } else if (knapsackMatrix[itemIndex - 1][weightIndex - currentItem.weight]) {
-        this.selectedItems.push(prevItem);
+      // If the value differs from the row above, the current item was included.
+      if (knapsackMatrix[itemIndex][weightIndex] !== knapsackMatrix[itemIndex - 1][weightIndex]) {
+        this.selectedItems.push(currentItem);
         weightIndex -= currentItem.weight;
       }
 
       itemIndex -= 1;
+    }
+
+    // Check if the first item was also included.
+    if (knapsackMatrix[0][weightIndex] !== 0) {
+      this.selectedItems.push(this.possibleItems[0]);
     }
   }
 
