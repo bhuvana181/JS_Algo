@@ -1,82 +1,131 @@
+// edited by sarors
+// github.com/saarors
 export default class Comparator {
   /**
-   * Constructor.
-   * @param {function(a: *, b: *)} [compareFunction] - It may be custom compare function that, let's
-   * say may compare custom objects together.
+   * Creates a Comparator instance.
+   * @param {Function} [compareFunction] - Optional custom compare function.
+   * The function must return:
+   *   - negative number if a < b
+   *   - 0 if a === b
+   *   - positive number if a > b
    */
   constructor(compareFunction) {
+    this.setCompareFunction(compareFunction);
+  }
+
+  /**
+   * Sets or replaces the comparison function.
+   * @param {Function} [compareFunction]
+   */
+  setCompareFunction(compareFunction) {
+    if (compareFunction && typeof compareFunction !== 'function') {
+      throw new TypeError('Compare function must be a function');
+    }
+
     this.compare = compareFunction || Comparator.defaultCompareFunction;
   }
 
   /**
-   * Default comparison function. It just assumes that "a" and "b" are strings or numbers.
-   * @param {(string|number)} a
-   * @param {(string|number)} b
+   * Default comparison function.
+   * Assumes values are numbers, strings, or comparable primitives.
+   *
+   * @param {*} a
+   * @param {*} b
    * @returns {number}
    */
   static defaultCompareFunction(a, b) {
-    if (a === b) {
-      return 0;
-    }
+    if (a === b) return 0;
+
+    if (a == null) return -1;
+    if (b == null) return 1;
 
     return a < b ? -1 : 1;
   }
 
   /**
-   * Checks if two variables are equal.
+   * Checks if two values are equal.
    * @param {*} a
    * @param {*} b
-   * @return {boolean}
+   * @returns {boolean}
    */
   equal(a, b) {
     return this.compare(a, b) === 0;
   }
 
   /**
-   * Checks if variable "a" is less than "b".
+   * Checks if a is less than b.
    * @param {*} a
    * @param {*} b
-   * @return {boolean}
+   * @returns {boolean}
    */
   lessThan(a, b) {
     return this.compare(a, b) < 0;
   }
 
   /**
-   * Checks if variable "a" is greater than "b".
+   * Checks if a is greater than b.
    * @param {*} a
    * @param {*} b
-   * @return {boolean}
+   * @returns {boolean}
    */
   greaterThan(a, b) {
     return this.compare(a, b) > 0;
   }
 
   /**
-   * Checks if variable "a" is less than or equal to "b".
+   * Checks if a is less than or equal to b.
    * @param {*} a
    * @param {*} b
-   * @return {boolean}
+   * @returns {boolean}
    */
   lessThanOrEqual(a, b) {
-    return this.lessThan(a, b) || this.equal(a, b);
+    return this.compare(a, b) <= 0;
   }
 
   /**
-   * Checks if variable "a" is greater than or equal to "b".
+   * Checks if a is greater than or equal to b.
    * @param {*} a
    * @param {*} b
-   * @return {boolean}
+   * @returns {boolean}
    */
   greaterThanOrEqual(a, b) {
-    return this.greaterThan(a, b) || this.equal(a, b);
+    return this.compare(a, b) >= 0;
   }
 
   /**
-   * Reverses the comparison order.
+   * Reverses the current comparison logic.
+   * Does not mutate the original function reference.
    */
   reverse() {
-    const compareOriginal = this.compare;
-    this.compare = (a, b) => compareOriginal(b, a);
+    const originalCompare = this.compare;
+    this.compare = (a, b) => originalCompare(b, a);
+    return this;
+  }
+
+  /**
+   * Creates a new Comparator instance with the same compare function.
+   * @returns {Comparator}
+   */
+  clone() {
+    return new Comparator(this.compare);
+  }
+
+  /**
+   * Creates a comparator based on a key selector function.
+   * Useful for sorting objects by a specific property.
+   *
+   * @param {Function} keySelector
+   * @returns {Comparator}
+   */
+  static by(keySelector) {
+    if (typeof keySelector !== 'function') {
+      throw new TypeError('Key selector must be a function');
+    }
+
+    return new Comparator((a, b) => {
+      const keyA = keySelector(a);
+      const keyB = keySelector(b);
+      return Comparator.defaultCompareFunction(keyA, keyB);
+    });
   }
 }
