@@ -25,8 +25,7 @@ _Baca ini dalam bahasa yang lain:_
 [_Tiếng Việt_](README.vi-VN.md),
 [_Deutsch_](README.de-DE.md),
 [_Uzbek_](README.uz-UZ.md)
-
-_☝ Perhatikan bahwa proyek ini hanya dimaksudkan untuk tujuan pembelajaran dan riset, dan **tidak** dimaksudkan untuk digunakan sebagai produksi._
+[_עברית_](README.he-IL.md)
 
 ## Struktur Data
 

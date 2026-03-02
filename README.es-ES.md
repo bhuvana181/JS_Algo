@@ -27,9 +27,7 @@ _Léelo en otros idiomas:_
 [_Tiếng Việt_](README.vi-VN.md),
 [_Deutsch_](README.de-DE.md),
 [_Uzbek_](README.uz-UZ.md)
-
-*☝ Nótese que este proyecto está pensado con fines de aprendizaje e investigación,
-y **no** para ser usado en producción.*
+[_עברית_](README.he-IL.md)
 
 ## Estructuras de Datos
 

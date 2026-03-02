@@ -158,6 +158,19 @@ describe('Graph', () => {
     expect(addSameEdgeTwice).toThrow();
   });
 
+  it('should throw an error when trying to add vertex twice', () => {
+    function addSameEdgeTwice() {
+      const graph = new Graph(true);
+      const vertexA = new GraphVertex('A');
+
+      graph
+        .addVertex(vertexA)
+        .addVertex(vertexA);
+    }
+
+    expect(addSameEdgeTwice).toThrow();
+  });
+
   it('should return the list of all added edges', () => {
     const graph = new Graph(true);
 
@@ -263,7 +276,7 @@ describe('Graph', () => {
       graph.deleteEdge(edgeBC);
     }
 
-    expect(deleteNotExistingEdge).toThrowError();
+    expect(deleteNotExistingEdge).toThrow();
   });
 
   it('should be possible to reverse graph', () => {
