@@ -110,7 +110,7 @@ export default class BinarySearchTreeNode extends BinaryTreeNode {
       // Find the next biggest value (minimum value in the right branch)
       // and replace current value node with that next biggest value.
       const nextBiggerNode = nodeToRemove.right.findMin();
-      if (!this.nodeComparator.equal(nextBiggerNode, nodeToRemove.right)) {
+      if (!this.nodeValueComparator.equal(nextBiggerNode, nodeToRemove.right)) {
         this.remove(nextBiggerNode.value);
         nodeToRemove.setValue(nextBiggerNode.value);
       } else {
