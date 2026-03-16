@@ -29,7 +29,7 @@ n * (n-1) * (n -2) * ... * 1 = n!
 When repetition is allowed we have permutations with repetitions.
 For example the the lock below: it could be `333`.
 
-![Permutation Lock](https://www.mathsisfun.com/combinatorics/images/combination-lock.jpg)
+![Permutation Lock](./images/permutation-lock.jpg)
 
 **Number of combinations**
 
@@ -53,3 +53,4 @@ n * n * n ... (r times) = n^r
 
 - [Math Is Fun](https://www.mathsisfun.com/combinatorics/combinations-permutations.html)
 - [Permutations/combinations cheat sheets](https://medium.com/@trekhleb/permutations-combinations-algorithms-cheat-sheet-68c14879aba5)
+
