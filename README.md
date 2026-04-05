@@ -295,6 +295,7 @@ npm i
 
 Also, make sure that you're using the correct Node version (`>=16`). If you're using [nvm](https://github.com/nvm-sh/nvm) for Node version management you may run `nvm use` from the root folder of the project and the correct version will be picked up.
 
+- [Glitch Widget](https://github.com/Ankitajainkuniya/glitch-widget) - Production bug reporting widget using DOM manipulation, Canvas API, MediaRecorder
 **Playground**
 
 You may play with data-structures and algorithms in `./src/playground/playground.js` file and write
