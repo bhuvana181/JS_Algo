@@ -40,6 +40,7 @@ _Read this in other languages:_
 [_Uzbek_](README.uz-UZ.md),
 [_עברית_](README.he-IL.md)
 
+- [guardian-agent-prompts](https://github.com/milkomida77/guardian-agent-prompts) - 49 production-tested AI agent system prompts for JavaScript development orchestration, automated code review, and multi-agent coordination. MIT licensed.
 ## Data Structures
 
 A data structure is a particular way of organizing and storing data in a computer so that it can
